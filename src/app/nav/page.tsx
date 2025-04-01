@@ -20,50 +20,15 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", path: "/" },
+
   ];
 
   if (!hydrated) return null;
 
   return (
-    <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
-      {/* Left Side - Navigation Links (Hidden in Small Screens) */}
-      <div className="hidden md:flex space-x-4">
-        {navItems.map((item) => (
-          <Link key={item.path} href={item.path} passHref>
-            <span
-              className={`px-4 py-2 rounded text-white cursor-pointer ${
-                pathname === item.path ? "bg-blue-500" : "hover:bg-gray-600"
-              }`}
-            >
-              {item.name}
-            </span>
-          </Link>
-        ))}
-      </div>
+    <nav className="bg-white shadow-md p-4 flex justify-between items-center shadow-sm">
+      <h1 className="text-xl font-bold">My Dashboard</h1>
 
-      {/* Mobile Menu Button */}
-      <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-        <FiMenu className="text-white text-2xl" />
-      </button>
-
-      {/* Mobile Dropdown Menu */}
-      {menuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-gray-900 text-white flex flex-col items-start space-y-2 p-4 shadow-lg md:hidden  z-50">
-          {navItems.map((item) => (
-            <Link key={item.path} href={item.path} passHref>
-              <span
-                className={`px-4 py-2 w-full text-white text-left ${
-                  pathname === item.path ? "bg-blue-500" : "hover:bg-gray-600"
-                }`}
-              >
-                {item.name}
-              </span>
-            </Link>
-          ))}
-        </div>
-      )}
-
-      {/* Right Side - User Dropdown */}
       {session && (
         <div className="relative">
           <div
@@ -98,5 +63,7 @@ export default function Navbar() {
         </div>
       )}
     </nav>
+
   );
 }
+
